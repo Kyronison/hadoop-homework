@@ -30,6 +30,13 @@
       "private_ip": "10.10.0.13"
     }
   ],
+  "hive": {
+    "version": "4.0.0-alpha-2",
+    "install_root": "/home/team/teachbase-hive",
+    "metastore_heap_mb": 384,
+    "server_heap_mb": 512,
+    "client_heap_mb": 256
+  },
   "web": {
     "public_host": "203.0.113.10",
     "port_base": 18443,

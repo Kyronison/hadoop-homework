@@ -1,0 +1,277 @@
+{
+  "scope": "HW3 teaching scenario on the existing four-node cluster",
+  "date": "2026-10-23",
+  "ok": true,
+  "versions": {
+    "hive": "4.0.0-alpha-2",
+    "hadoop": "3.4.2",
+    "java": "11.0.32.1",
+    "postgresql": "16.15",
+    "ubuntu": "24.04.5"
+  },
+  "archive_sha256": "f94c773e7ae3328d780138d9259c584e94d8f2e34715776cdfaaa78bcf3f25e1",
+  "deployment": {
+    "schema_validation": "SUCCESS",
+    "redeploy_with_existing_schema_and_running_metastore": "PASS",
+    "hadoop_configuration_hashes_unchanged_on_all_four_nodes": true,
+    "postgresql_listener": "master loopback:5432",
+    "metastore_listener": "master private address:9083",
+    "hiveserver2_listener": "worker2 private address:10000",
+    "database_password_only_on_master": true,
+    "derby_directories_found": 0
+  },
+  "concurrent_clients": {
+    "started_at": "2026-10-23T17:08:16.135571Z",
+    "jdbc_url": "jdbc:hive2://<hiveserver2>:10000/hw3_lab",
+    "query": "SELECT dt, COUNT(*), SUM(amount) FROM hw3_lab.sales GROUP BY dt ORDER BY dt",
+    "query_timeout_seconds": 240,
+    "expected_rows": [
+      [
+        "2026-10-01",
+        "3",
+        "400.00"
+      ],
+      [
+        "2026-10-02",
+        "3",
+        "500.00"
+      ]
+    ],
+    "session_measurement": "Independent JDBC connections successfully opened and held until both queries finish; client-side observation, not a server metric",
+    "execution_settings": [
+      "hive.execution.engine=mr",
+      "hive.fetch.task.conversion=none",
+      "hive.compute.query.using.stats=false",
+      "hive.query.results.cache.enabled=false",
+      "hive.exec.mode.local.auto=false"
+    ],
+    "clients": [
+      {
+        "client": "client_1",
+        "ok": true,
+        "opened_at": "2026-10-23T17:08:18.766458Z",
+        "requested_jdbc_url": "jdbc:hive2://<hiveserver2>:10000/hw3_lab",
+        "both_connections_ready_at": "2026-10-23T17:08:18.766754Z",
+        "query_started_at": "2026-10-23T17:08:19.037222Z",
+        "query_finished_at": "2026-10-23T17:10:11.288230Z",
+        "rows": [
+          [
+            "2026-10-01",
+            "3",
+            "400.00"
+          ],
+          [
+            "2026-10-02",
+            "3",
+            "500.00"
+          ]
+        ],
+        "closed_at": "2026-10-23T17:10:45.093635Z"
+      },
+      {
+        "client": "client_2",
+        "ok": true,
+        "opened_at": "2026-10-23T17:08:18.763946Z",
+        "requested_jdbc_url": "jdbc:hive2://<hiveserver2>:10000/hw3_lab",
+        "both_connections_ready_at": "2026-10-23T17:08:18.768753Z",
+        "query_started_at": "2026-10-23T17:08:19.037155Z",
+        "query_finished_at": "2026-10-23T17:10:45.043571Z",
+        "rows": [
+          [
+            "2026-10-01",
+            "3",
+            "400.00"
+          ],
+          [
+            "2026-10-02",
+            "3",
+            "500.00"
+          ]
+        ],
+        "closed_at": "2026-10-23T17:10:45.093635Z"
+      }
+    ],
+    "max_simultaneous_sessions": 2,
+    "finished_at": "2026-10-23T17:10:45.094026Z",
+    "ok": true
+  },
+  "concurrency_checks": [
+    {
+      "name": "remote_jdbc_endpoint",
+      "ok": true
+    },
+    {
+      "name": "two_simultaneous_connections",
+      "ok": true
+    },
+    {
+      "name": "expected_fixture",
+      "ok": true
+    },
+    {
+      "name": "two_client_results",
+      "ok": true
+    },
+    {
+      "name": "client_results_are_objects",
+      "ok": true
+    },
+    {
+      "name": "distinct_client_labels",
+      "ok": true
+    },
+    {
+      "name": "client_1_expected_rows",
+      "ok": true
+    },
+    {
+      "name": "client_2_expected_rows",
+      "ok": true
+    },
+    {
+      "name": "both_open_before_queries",
+      "ok": true
+    },
+    {
+      "name": "both_held_until_queries_finish",
+      "ok": true
+    },
+    {
+      "name": "overlapping_connection_intervals",
+      "ok": true
+    },
+    {
+      "name": "ordered_timestamps",
+      "ok": true
+    }
+  ],
+  "successful_yarn_applications": [
+    {
+      "id": "application_1792718504081_0005",
+      "name": "SELECT dt, COUNT(*), ......BY dt ORDER BY dt (Stage-1)",
+      "user": "team",
+      "state": "FINISHED",
+      "finalStatus": "SUCCEEDED",
+      "startedTime": 1792775308167,
+      "finishedTime": 1792775340464,
+      "elapsedTime": 32297,
+      "diagnostics": ""
+    },
+    {
+      "id": "application_1792718504081_0006",
+      "name": "SELECT dt, COUNT(*), ......BY dt ORDER BY dt (Stage-1)",
+      "user": "team",
+      "state": "FINISHED",
+      "finalStatus": "SUCCEEDED",
+      "startedTime": 1792775308179,
+      "finishedTime": 1792775376971,
+      "elapsedTime": 68792,
+      "diagnostics": ""
+    },
+    {
+      "id": "application_1792718504081_0007",
+      "name": "SELECT dt, COUNT(*), ......BY dt ORDER BY dt (Stage-2)",
+      "user": "team",
+      "state": "FINISHED",
+      "finalStatus": "SUCCEEDED",
+      "startedTime": 1792775343069,
+      "finishedTime": 1792775409692,
+      "elapsedTime": 66623,
+      "diagnostics": ""
+    },
+    {
+      "id": "application_1792718504081_0008",
+      "name": "SELECT dt, COUNT(*), ......BY dt ORDER BY dt (Stage-2)",
+      "user": "team",
+      "state": "FINISHED",
+      "finalStatus": "SUCCEEDED",
+      "startedTime": 1792775379800,
+      "finishedTime": 1792775443843,
+      "elapsedTime": 64043,
+      "diagnostics": ""
+    }
+  ],
+  "repeat_load": {
+    "checked_at": "2026-10-23T17:12:30.942463+00:00",
+    "partitions": [
+      "dt=2026-10-01",
+      "dt=2026-10-02"
+    ],
+    "rows": [
+      [
+        "1",
+        "101",
+        "100.00",
+        "2026-10-01"
+      ],
+      [
+        "2",
+        "102",
+        "250.50",
+        "2026-10-01"
+      ],
+      [
+        "3",
+        "101",
+        "49.50",
+        "2026-10-01"
+      ],
+      [
+        "4",
+        "103",
+        "80.00",
+        "2026-10-02"
+      ],
+      [
+        "5",
+        "102",
+        "120.00",
+        "2026-10-02"
+      ],
+      [
+        "6",
+        "104",
+        "300.00",
+        "2026-10-02"
+      ]
+    ],
+    "row_count": 6,
+    "totals_by_partition": [
+      [
+        "2026-10-01",
+        "3",
+        "400.00"
+      ],
+      [
+        "2026-10-02",
+        "3",
+        "500.00"
+      ]
+    ],
+    "total": "900.00",
+    "duplicates": false
+  },
+  "hadoop_after_check": {
+    "live_datanodes": 3,
+    "running_nodemanagers": 3,
+    "warehouse_fsck": "HEALTHY",
+    "data_file_replication": 3
+  },
+  "tests": {
+    "environment": "Linux edge, ordinary user",
+    "executed": 79,
+    "failures": 0,
+    "skipped": 0
+  },
+  "resolved_setup_issues": [
+    "Metastore notification API uses a service-specific proxy host in its own core-site.xml copy.",
+    "Hive alpha2 creates the managed database directory before the loader prepares the table directory.",
+    "Commons Collections 3.2.2 from the Hive archive is distributed to MapReduce via hive.aux.jars.path. Diagnostic applications 0003 and 0004 failed before this fix; validation applications 0005-0008 succeeded."
+  ],
+  "limits": [
+    "Small synthetic dataset; no production load, HA or ACID validation.",
+    "Concurrent independent JDBC sessions are observed client-side; YARN may schedule their stages sequentially.",
+    "Authentication NONE is limited to the trusted private lab network.",
+    "Actual VM addresses are replaced by role names in this public summary."
+  ]
+}
