@@ -1,0 +1,14 @@
+inventory.json
+inventory.local.json
+generated/
+generated-example/
+evidence/
+__pycache__/
+*.pyc
+*.pem
+*.key
+id_*
+.env
+*credentials*.json
+*htpasswd*
+*.crt

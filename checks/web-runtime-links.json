@@ -1,0 +1,1026 @@
+{
+  "at": "2026-10-23T15:52:31.084853+00:00",
+  "scope": "internal",
+  "javascript_executed": false,
+  "checks": [
+    {
+      "service": "nn",
+      "path": "/dfshealth.html",
+      "status": 200,
+      "bytes": 18995
+    },
+    {
+      "service": "snn",
+      "path": "/status.html",
+      "status": 200,
+      "bytes": 3586
+    },
+    {
+      "service": "dn1",
+      "path": "/datanode.html",
+      "status": 200,
+      "bytes": 4750
+    },
+    {
+      "service": "dn2",
+      "path": "/datanode.html",
+      "status": 200,
+      "bytes": 4750
+    },
+    {
+      "service": "dn3",
+      "path": "/datanode.html",
+      "status": 200,
+      "bytes": 4750
+    },
+    {
+      "service": "rm",
+      "path": "/cluster",
+      "status": 200,
+      "bytes": 15216
+    },
+    {
+      "service": "nm1",
+      "path": "/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "nm2",
+      "path": "/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "nm3",
+      "path": "/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory",
+      "status": 200,
+      "bytes": 8276
+    },
+    {
+      "service": "proxy",
+      "path": "/proxy/application_1792718504081_0002/",
+      "status": 302,
+      "bytes": 256
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes",
+      "status": 200,
+      "bytes": 13926
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/app/application_1792718504081_0002",
+      "status": 200,
+      "bytes": 13800
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/job/job_1792718504081_0002",
+      "status": 200,
+      "bytes": 10700
+    },
+    {
+      "service": "nn",
+      "path": "/static/bootstrap-3.4.1/css/bootstrap.min.css",
+      "status": 200,
+      "bytes": 121457
+    },
+    {
+      "service": "nn",
+      "path": "/static/dataTables.bootstrap.css",
+      "status": 200,
+      "bytes": 8821
+    },
+    {
+      "service": "nn",
+      "path": "/static/hadoop.css",
+      "status": 200,
+      "bytes": 7062
+    },
+    {
+      "service": "nn",
+      "path": "/jmx",
+      "status": 200,
+      "bytes": 353743
+    },
+    {
+      "service": "nn",
+      "path": "/static/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "nn",
+      "path": "/static/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 86914
+    },
+    {
+      "service": "nn",
+      "path": "/static/bootstrap-3.4.1/js/bootstrap.min.js",
+      "status": 200,
+      "bytes": 39680
+    },
+    {
+      "service": "nn",
+      "path": "/static/dataTables.bootstrap.js",
+      "status": 200,
+      "bytes": 4837
+    },
+    {
+      "service": "nn",
+      "path": "/static/moment.min.js",
+      "status": 200,
+      "bytes": 58094
+    },
+    {
+      "service": "nn",
+      "path": "/static/dust-full-2.0.0.min.js",
+      "status": 200,
+      "bytes": 33510
+    },
+    {
+      "service": "nn",
+      "path": "/static/dust-helpers-1.1.1.min.js",
+      "status": 200,
+      "bytes": 4124
+    },
+    {
+      "service": "nn",
+      "path": "/static/dfs-dust.js",
+      "status": 200,
+      "bytes": 3800
+    },
+    {
+      "service": "nn",
+      "path": "/static/d3-v4.1.1.min.js",
+      "status": 200,
+      "bytes": 210846
+    },
+    {
+      "service": "nn",
+      "path": "/dfshealth.js",
+      "status": 200,
+      "bytes": 22099
+    },
+    {
+      "service": "nn",
+      "path": "/static/histogram-hostip.js",
+      "status": 200,
+      "bytes": 2237
+    },
+    {
+      "service": "snn",
+      "path": "/static/bootstrap-3.4.1/css/bootstrap.min.css",
+      "status": 200,
+      "bytes": 121457
+    },
+    {
+      "service": "snn",
+      "path": "/static/hadoop.css",
+      "status": 200,
+      "bytes": 7062
+    },
+    {
+      "service": "snn",
+      "path": "/static/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "snn",
+      "path": "/static/bootstrap-3.4.1/js/bootstrap.min.js",
+      "status": 200,
+      "bytes": 39680
+    },
+    {
+      "service": "snn",
+      "path": "/static/moment.min.js",
+      "status": 200,
+      "bytes": 58094
+    },
+    {
+      "service": "snn",
+      "path": "/static/dust-full-2.0.0.min.js",
+      "status": 200,
+      "bytes": 33510
+    },
+    {
+      "service": "snn",
+      "path": "/static/dust-helpers-1.1.1.min.js",
+      "status": 200,
+      "bytes": 4124
+    },
+    {
+      "service": "snn",
+      "path": "/static/dfs-dust.js",
+      "status": 200,
+      "bytes": 3800
+    },
+    {
+      "service": "snn",
+      "path": "/snn.js",
+      "status": 200,
+      "bytes": 2178
+    },
+    {
+      "service": "dn1",
+      "path": "/static/bootstrap-3.4.1/css/bootstrap.min.css",
+      "status": 200,
+      "bytes": 121457
+    },
+    {
+      "service": "dn1",
+      "path": "/static/hadoop.css",
+      "status": 200,
+      "bytes": 7062
+    },
+    {
+      "service": "dn1",
+      "path": "/jmx",
+      "status": 200,
+      "bytes": 311055
+    },
+    {
+      "service": "dn1",
+      "path": "/static/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "dn1",
+      "path": "/static/bootstrap-3.4.1/js/bootstrap.min.js",
+      "status": 200,
+      "bytes": 39680
+    },
+    {
+      "service": "dn1",
+      "path": "/static/moment.min.js",
+      "status": 200,
+      "bytes": 58094
+    },
+    {
+      "service": "dn1",
+      "path": "/static/dust-full-2.0.0.min.js",
+      "status": 200,
+      "bytes": 33510
+    },
+    {
+      "service": "dn1",
+      "path": "/static/dust-helpers-1.1.1.min.js",
+      "status": 200,
+      "bytes": 4124
+    },
+    {
+      "service": "dn1",
+      "path": "/static/dfs-dust.js",
+      "status": 200,
+      "bytes": 3800
+    },
+    {
+      "service": "dn1",
+      "path": "/dn.js",
+      "status": 200,
+      "bytes": 2135
+    },
+    {
+      "service": "dn2",
+      "path": "/static/bootstrap-3.4.1/css/bootstrap.min.css",
+      "status": 200,
+      "bytes": 121457
+    },
+    {
+      "service": "dn2",
+      "path": "/static/hadoop.css",
+      "status": 200,
+      "bytes": 7062
+    },
+    {
+      "service": "dn2",
+      "path": "/jmx",
+      "status": 200,
+      "bytes": 311088
+    },
+    {
+      "service": "dn2",
+      "path": "/static/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "dn2",
+      "path": "/static/bootstrap-3.4.1/js/bootstrap.min.js",
+      "status": 200,
+      "bytes": 39680
+    },
+    {
+      "service": "dn2",
+      "path": "/static/moment.min.js",
+      "status": 200,
+      "bytes": 58094
+    },
+    {
+      "service": "dn2",
+      "path": "/static/dust-full-2.0.0.min.js",
+      "status": 200,
+      "bytes": 33510
+    },
+    {
+      "service": "dn2",
+      "path": "/static/dust-helpers-1.1.1.min.js",
+      "status": 200,
+      "bytes": 4124
+    },
+    {
+      "service": "dn2",
+      "path": "/static/dfs-dust.js",
+      "status": 200,
+      "bytes": 3800
+    },
+    {
+      "service": "dn2",
+      "path": "/dn.js",
+      "status": 200,
+      "bytes": 2135
+    },
+    {
+      "service": "dn3",
+      "path": "/static/bootstrap-3.4.1/css/bootstrap.min.css",
+      "status": 200,
+      "bytes": 121457
+    },
+    {
+      "service": "dn3",
+      "path": "/static/hadoop.css",
+      "status": 200,
+      "bytes": 7062
+    },
+    {
+      "service": "dn3",
+      "path": "/jmx",
+      "status": 200,
+      "bytes": 311261
+    },
+    {
+      "service": "dn3",
+      "path": "/static/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "dn3",
+      "path": "/static/bootstrap-3.4.1/js/bootstrap.min.js",
+      "status": 200,
+      "bytes": 39680
+    },
+    {
+      "service": "dn3",
+      "path": "/static/moment.min.js",
+      "status": 200,
+      "bytes": 58094
+    },
+    {
+      "service": "dn3",
+      "path": "/static/dust-full-2.0.0.min.js",
+      "status": 200,
+      "bytes": 33510
+    },
+    {
+      "service": "dn3",
+      "path": "/static/dust-helpers-1.1.1.min.js",
+      "status": 200,
+      "bytes": 4124
+    },
+    {
+      "service": "dn3",
+      "path": "/static/dfs-dust.js",
+      "status": 200,
+      "bytes": 3800
+    },
+    {
+      "service": "dn3",
+      "path": "/dn.js",
+      "status": 200,
+      "bytes": 2135
+    },
+    {
+      "service": "rm",
+      "path": "/static/yarn.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "rm",
+      "path": "/static/jquery/themes-1.9.1/base/jquery-ui.css",
+      "status": 200,
+      "bytes": 32830
+    },
+    {
+      "service": "rm",
+      "path": "/static/dt-1.11.5/css/jquery.dataTables.css",
+      "status": 200,
+      "bytes": 16298
+    },
+    {
+      "service": "rm",
+      "path": "/static/dt-1.11.5/css/jui-dt.css",
+      "status": 200,
+      "bytes": 7101
+    },
+    {
+      "service": "rm",
+      "path": "/static/dt-1.11.5/css/custom_datatable.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "rm",
+      "path": "/static/jquery/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "rm",
+      "path": "/static/jquery/jquery-ui-1.13.2.custom.min.js",
+      "status": 200,
+      "bytes": 255084
+    },
+    {
+      "service": "rm",
+      "path": "/static/dt-1.11.5/js/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 88048
+    },
+    {
+      "service": "rm",
+      "path": "/static/yarn.dt.plugins.js",
+      "status": 200,
+      "bytes": 5993
+    },
+    {
+      "service": "rm",
+      "path": "/static/dt-sorting/natural.js",
+      "status": 200,
+      "bytes": 1653
+    },
+    {
+      "service": "rm",
+      "path": "/static/hadoop-st.png",
+      "status": 200,
+      "bytes": 23946
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/cluster",
+      "status": 200,
+      "bytes": 12788
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodelabels",
+      "status": 200,
+      "bytes": 5966
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps",
+      "status": 200,
+      "bytes": 15216
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/NEW",
+      "status": 200,
+      "bytes": 14069
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/NEW_SAVING",
+      "status": 200,
+      "bytes": 14083
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/SUBMITTED",
+      "status": 200,
+      "bytes": 14081
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/ACCEPTED",
+      "status": 200,
+      "bytes": 14079
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/RUNNING",
+      "status": 200,
+      "bytes": 14077
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/FINISHED",
+      "status": 200,
+      "bytes": 15226
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/FAILED",
+      "status": 200,
+      "bytes": 14075
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/apps/KILLED",
+      "status": 200,
+      "bytes": 14075
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/scheduler",
+      "status": 200,
+      "bytes": 42148
+    },
+    {
+      "service": "rm",
+      "path": "/jmx?qry=Hadoop:*",
+      "status": 200,
+      "bytes": 39173
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/decommissioning",
+      "status": 200,
+      "bytes": 13225
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/decommissioned",
+      "status": 200,
+      "bytes": 13223
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/lost",
+      "status": 200,
+      "bytes": 13203
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/unhealthy",
+      "status": 200,
+      "bytes": 13213
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/rebooted",
+      "status": 200,
+      "bytes": 13211
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/nodes/shutdown",
+      "status": 200,
+      "bytes": 13211
+    },
+    {
+      "service": "nm1",
+      "path": "/static/yarn.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm1",
+      "path": "/static/jquery/themes-1.9.1/base/jquery-ui.css",
+      "status": 200,
+      "bytes": 32830
+    },
+    {
+      "service": "nm1",
+      "path": "/static/dt-1.11.5/css/jquery.dataTables.css",
+      "status": 200,
+      "bytes": 16298
+    },
+    {
+      "service": "nm1",
+      "path": "/static/dt-1.11.5/css/jui-dt.css",
+      "status": 200,
+      "bytes": 7101
+    },
+    {
+      "service": "nm1",
+      "path": "/static/dt-1.11.5/css/custom_datatable.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm1",
+      "path": "/static/jquery/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "nm1",
+      "path": "/static/jquery/jquery-ui-1.13.2.custom.min.js",
+      "status": 200,
+      "bytes": 255084
+    },
+    {
+      "service": "nm1",
+      "path": "/static/dt-1.11.5/js/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 88048
+    },
+    {
+      "service": "nm1",
+      "path": "/static/yarn.dt.plugins.js",
+      "status": 200,
+      "bytes": 5993
+    },
+    {
+      "service": "nm1",
+      "path": "/static/dt-sorting/natural.js",
+      "status": 200,
+      "bytes": 1653
+    },
+    {
+      "service": "nm1",
+      "path": "/static/hadoop-st.png",
+      "status": 200,
+      "bytes": 23946
+    },
+    {
+      "service": "nm1",
+      "path": "/node/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "nm1",
+      "path": "/node/allApplications",
+      "status": 200,
+      "bytes": 4791
+    },
+    {
+      "service": "nm1",
+      "path": "/node/allContainers",
+      "status": 200,
+      "bytes": 4934
+    },
+    {
+      "service": "nm1",
+      "path": "/jmx?qry=Hadoop:*",
+      "status": 200,
+      "bytes": 11279
+    },
+    {
+      "service": "nm2",
+      "path": "/static/yarn.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm2",
+      "path": "/static/jquery/themes-1.9.1/base/jquery-ui.css",
+      "status": 200,
+      "bytes": 32830
+    },
+    {
+      "service": "nm2",
+      "path": "/static/dt-1.11.5/css/jquery.dataTables.css",
+      "status": 200,
+      "bytes": 16298
+    },
+    {
+      "service": "nm2",
+      "path": "/static/dt-1.11.5/css/jui-dt.css",
+      "status": 200,
+      "bytes": 7101
+    },
+    {
+      "service": "nm2",
+      "path": "/static/dt-1.11.5/css/custom_datatable.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm2",
+      "path": "/static/jquery/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "nm2",
+      "path": "/static/jquery/jquery-ui-1.13.2.custom.min.js",
+      "status": 200,
+      "bytes": 255084
+    },
+    {
+      "service": "nm2",
+      "path": "/static/dt-1.11.5/js/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 88048
+    },
+    {
+      "service": "nm2",
+      "path": "/static/yarn.dt.plugins.js",
+      "status": 200,
+      "bytes": 5993
+    },
+    {
+      "service": "nm2",
+      "path": "/static/dt-sorting/natural.js",
+      "status": 200,
+      "bytes": 1653
+    },
+    {
+      "service": "nm2",
+      "path": "/static/hadoop-st.png",
+      "status": 200,
+      "bytes": 23946
+    },
+    {
+      "service": "nm2",
+      "path": "/node/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "nm2",
+      "path": "/node/allApplications",
+      "status": 200,
+      "bytes": 4791
+    },
+    {
+      "service": "nm2",
+      "path": "/node/allContainers",
+      "status": 200,
+      "bytes": 4934
+    },
+    {
+      "service": "nm2",
+      "path": "/jmx?qry=Hadoop:*",
+      "status": 200,
+      "bytes": 11262
+    },
+    {
+      "service": "nm3",
+      "path": "/static/yarn.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm3",
+      "path": "/static/jquery/themes-1.9.1/base/jquery-ui.css",
+      "status": 200,
+      "bytes": 32830
+    },
+    {
+      "service": "nm3",
+      "path": "/static/dt-1.11.5/css/jquery.dataTables.css",
+      "status": 200,
+      "bytes": 16298
+    },
+    {
+      "service": "nm3",
+      "path": "/static/dt-1.11.5/css/jui-dt.css",
+      "status": 200,
+      "bytes": 7101
+    },
+    {
+      "service": "nm3",
+      "path": "/static/dt-1.11.5/css/custom_datatable.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "nm3",
+      "path": "/static/jquery/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "nm3",
+      "path": "/static/jquery/jquery-ui-1.13.2.custom.min.js",
+      "status": 200,
+      "bytes": 255084
+    },
+    {
+      "service": "nm3",
+      "path": "/static/dt-1.11.5/js/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 88048
+    },
+    {
+      "service": "nm3",
+      "path": "/static/yarn.dt.plugins.js",
+      "status": 200,
+      "bytes": 5993
+    },
+    {
+      "service": "nm3",
+      "path": "/static/dt-sorting/natural.js",
+      "status": 200,
+      "bytes": 1653
+    },
+    {
+      "service": "nm3",
+      "path": "/static/hadoop-st.png",
+      "status": 200,
+      "bytes": 23946
+    },
+    {
+      "service": "nm3",
+      "path": "/node/node",
+      "status": 200,
+      "bytes": 6588
+    },
+    {
+      "service": "nm3",
+      "path": "/node/allApplications",
+      "status": 200,
+      "bytes": 4791
+    },
+    {
+      "service": "nm3",
+      "path": "/node/allContainers",
+      "status": 200,
+      "bytes": 4934
+    },
+    {
+      "service": "nm3",
+      "path": "/jmx?qry=Hadoop:*",
+      "status": 200,
+      "bytes": 11291
+    },
+    {
+      "service": "history",
+      "path": "/static/yarn.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "history",
+      "path": "/static/jquery/themes-1.9.1/base/jquery-ui.css",
+      "status": 200,
+      "bytes": 32830
+    },
+    {
+      "service": "history",
+      "path": "/static/dt-1.11.5/css/jquery.dataTables.css",
+      "status": 200,
+      "bytes": 16298
+    },
+    {
+      "service": "history",
+      "path": "/static/dt-1.11.5/css/jui-dt.css",
+      "status": 200,
+      "bytes": 7101
+    },
+    {
+      "service": "history",
+      "path": "/static/dt-1.11.5/css/custom_datatable.css",
+      "status": 200,
+      "bytes": 1839
+    },
+    {
+      "service": "history",
+      "path": "/static/jquery/jquery-3.6.0.min.js",
+      "status": 200,
+      "bytes": 89500
+    },
+    {
+      "service": "history",
+      "path": "/static/jquery/jquery-ui-1.13.2.custom.min.js",
+      "status": 200,
+      "bytes": 255084
+    },
+    {
+      "service": "history",
+      "path": "/static/dt-1.11.5/js/jquery.dataTables.min.js",
+      "status": 200,
+      "bytes": 88048
+    },
+    {
+      "service": "history",
+      "path": "/static/yarn.dt.plugins.js",
+      "status": 200,
+      "bytes": 5993
+    },
+    {
+      "service": "history",
+      "path": "/static/dt-sorting/natural.js",
+      "status": 200,
+      "bytes": 1653
+    },
+    {
+      "service": "history",
+      "path": "/static/hadoop-st.png",
+      "status": 200,
+      "bytes": 23946
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/about",
+      "status": 200,
+      "bytes": 4089
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/app",
+      "status": 200,
+      "bytes": 8276
+    },
+    {
+      "service": "history",
+      "path": "/jmx?qry=Hadoop:*",
+      "status": 200,
+      "bytes": 6208
+    },
+    {
+      "service": "rm",
+      "path": "/cluster/scheduler?openQueues=root.default",
+      "status": 200,
+      "bytes": 42148
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/jobcounters/job_1792718504081_0002",
+      "status": 200,
+      "bytes": 44072
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/tasks/job_1792718504081_0002/m",
+      "status": 200,
+      "bytes": 8803
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/tasks/job_1792718504081_0002/r",
+      "status": 200,
+      "bytes": 10049
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/logs/worker2:45454/container_1792718504081_0002_01_000001/job_1792718504081_0002/team",
+      "status": 200,
+      "bytes": 19312
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/m/FAILED",
+      "status": 200,
+      "bytes": 7835
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/m/KILLED",
+      "status": 200,
+      "bytes": 7835
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/m/SUCCESSFUL",
+      "status": 200,
+      "bytes": 8254
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/r/FAILED",
+      "status": 200,
+      "bytes": 9010
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/r/KILLED",
+      "status": 200,
+      "bytes": 9010
+    },
+    {
+      "service": "history",
+      "path": "/jobhistory/attempts/job_1792718504081_0002/r/SUCCESSFUL",
+      "status": 200,
+      "bytes": 9494
+    }
+  ],
+  "private_or_unmapped_links": [],
+  "blocked_admin_links": [
+    "/conf",
+    "/jobhistory/conf/job_1792718504081_0002",
+    "/logLevel",
+    "/stacks"
+  ],
+  "result": "pass",
+  "redaction": "Public address replaced by PUBLIC_HOST; node identifiers replaced by role labels; measured statuses, sizes and times retained.",
+  "certificate_trust": "Explicit test certificate; not publicly trusted. TLS hostname verification enabled.",
+  "publication_complete": false
+}

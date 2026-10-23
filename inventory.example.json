@@ -1,0 +1,42 @@
+{
+  "hadoop_version": "3.4.2",
+  "ssh_user": "team",
+  "ssh_key": "/home/team/.ssh/team_internal",
+  "ssh_port": 22,
+  "ssh_jump": "",
+  "install_root": "/home/team/teachbase-hadoop",
+  "yarn_memory_mb": 1536,
+  "yarn_vcores": 2,
+  "nodes": [
+    {
+      "name": "master",
+      "ssh_host": "cluster-master",
+      "private_ip": "10.10.0.10"
+    },
+    {
+      "name": "worker1",
+      "ssh_host": "cluster-edge",
+      "private_ip": "10.10.0.11",
+      "local": true
+    },
+    {
+      "name": "worker2",
+      "ssh_host": "cluster-worker-2",
+      "private_ip": "10.10.0.12"
+    },
+    {
+      "name": "worker3",
+      "ssh_host": "cluster-worker-3",
+      "private_ip": "10.10.0.13"
+    }
+  ],
+  "web": {
+    "public_host": "203.0.113.10",
+    "port_base": 18443,
+    "certificate": "/etc/letsencrypt/live/teachbase-edge/fullchain.pem",
+    "certificate_key": "/etc/letsencrypt/live/teachbase-edge/privkey.pem",
+    "auth_file": "/etc/nginx/teachbase-htpasswd",
+    "allowed_cidrs": [],
+    "enabled": false
+  }
+}

@@ -1,0 +1,1168 @@
+{
+  "started_at": "2026-10-23T15:49:23.303710+00:00",
+  "scope": "internal",
+  "tls_verification": true,
+  "redirects_followed": false,
+  "redirect_policy": "Only the matching job on the configured HTTPS JobHistory endpoint; one hop",
+  "checks": [
+    {
+      "service": "nn",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/dfshealth.html",
+      "at": "2026-10-23T15:49:23.303731+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/dfshealth.html",
+      "at": "2026-10-23T15:49:23.308795+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/dfshealth.html",
+      "at": "2026-10-23T15:49:23.314884+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 18995,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18443/dfshealth.html",
+      "at": "2026-10-23T15:49:23.322434+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18443/dfshealth.html",
+      "at": "2026-10-23T15:49:23.328853+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/conf",
+      "at": "2026-10-23T15:49:23.331197+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.333655+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nn",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18443/jmx?qry=Hadoop:service=NameNode,name=NameNodeInfo",
+      "at": "2026-10-23T15:49:23.336096+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 3937,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/status.html",
+      "at": "2026-10-23T15:49:23.343345+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/status.html",
+      "at": "2026-10-23T15:49:23.346210+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/status.html",
+      "at": "2026-10-23T15:49:23.351827+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 3586,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18444/status.html",
+      "at": "2026-10-23T15:49:23.359591+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18444/status.html",
+      "at": "2026-10-23T15:49:23.366674+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/conf",
+      "at": "2026-10-23T15:49:23.369600+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.371884+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "snn",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18444/jmx?qry=Hadoop:service=SecondaryNameNode,name=SecondaryNameNodeInfo",
+      "at": "2026-10-23T15:49:23.374232+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 649,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/datanode.html",
+      "at": "2026-10-23T15:49:23.381551+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/datanode.html",
+      "at": "2026-10-23T15:49:23.384992+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/datanode.html",
+      "at": "2026-10-23T15:49:23.390404+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 4750,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18445/datanode.html",
+      "at": "2026-10-23T15:49:23.401732+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18445/datanode.html",
+      "at": "2026-10-23T15:49:23.416938+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/conf",
+      "at": "2026-10-23T15:49:23.421794+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.425699+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn1",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18445/jmx?qry=Hadoop:service=DataNode,name=DataNodeInfo",
+      "at": "2026-10-23T15:49:23.429548+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 1466,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/datanode.html",
+      "at": "2026-10-23T15:49:23.443215+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/datanode.html",
+      "at": "2026-10-23T15:49:23.448404+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/datanode.html",
+      "at": "2026-10-23T15:49:23.456386+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 4750,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18446/datanode.html",
+      "at": "2026-10-23T15:49:23.471445+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18446/datanode.html",
+      "at": "2026-10-23T15:49:23.481399+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/conf",
+      "at": "2026-10-23T15:49:23.483695+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.486086+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn2",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18446/jmx?qry=Hadoop:service=DataNode,name=DataNodeInfo",
+      "at": "2026-10-23T15:49:23.488510+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 1467,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/datanode.html",
+      "at": "2026-10-23T15:49:23.504902+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/datanode.html",
+      "at": "2026-10-23T15:49:23.507751+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/datanode.html",
+      "at": "2026-10-23T15:49:23.513297+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 4750,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18447/datanode.html",
+      "at": "2026-10-23T15:49:23.524363+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18447/datanode.html",
+      "at": "2026-10-23T15:49:23.535341+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/conf",
+      "at": "2026-10-23T15:49:23.537729+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.540146+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "dn3",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18447/jmx?qry=Hadoop:service=DataNode,name=DataNodeInfo",
+      "at": "2026-10-23T15:49:23.542485+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 1467,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/cluster",
+      "at": "2026-10-23T15:49:23.554148+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/cluster",
+      "at": "2026-10-23T15:49:23.557108+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/cluster",
+      "at": "2026-10-23T15:49:23.562792+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 15203,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18448/cluster",
+      "at": "2026-10-23T15:49:23.576348+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18448/cluster",
+      "at": "2026-10-23T15:49:23.588609+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/conf",
+      "at": "2026-10-23T15:49:23.590978+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.593378+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "rm",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18448/ws/v1/cluster/nodes",
+      "at": "2026-10-23T15:49:23.595736+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 5689,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/node",
+      "at": "2026-10-23T15:49:23.604585+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/node",
+      "at": "2026-10-23T15:49:23.607321+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/node",
+      "at": "2026-10-23T15:49:23.612773+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 6588,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18449/node",
+      "at": "2026-10-23T15:49:23.628543+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18449/node",
+      "at": "2026-10-23T15:49:23.645703+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/conf",
+      "at": "2026-10-23T15:49:23.650024+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.653917+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm1",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18449/ws/v1/node/info",
+      "at": "2026-10-23T15:49:23.657795+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 792,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/node",
+      "at": "2026-10-23T15:49:23.668653+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/node",
+      "at": "2026-10-23T15:49:23.673795+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/node",
+      "at": "2026-10-23T15:49:23.681944+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 6588,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18450/node",
+      "at": "2026-10-23T15:49:23.702657+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18450/node",
+      "at": "2026-10-23T15:49:23.716360+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/conf",
+      "at": "2026-10-23T15:49:23.719505+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.721859+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm2",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18450/ws/v1/node/info",
+      "at": "2026-10-23T15:49:23.724218+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 792,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/node",
+      "at": "2026-10-23T15:49:23.731808+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/node",
+      "at": "2026-10-23T15:49:23.734629+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/node",
+      "at": "2026-10-23T15:49:23.740178+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 6588,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18451/node",
+      "at": "2026-10-23T15:49:23.753519+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18451/node",
+      "at": "2026-10-23T15:49:23.770155+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/conf",
+      "at": "2026-10-23T15:49:23.772500+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.774865+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "nm3",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18451/ws/v1/node/info",
+      "at": "2026-10-23T15:49:23.777094+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 792,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/jobhistory",
+      "at": "2026-10-23T15:49:23.787255+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/jobhistory",
+      "at": "2026-10-23T15:49:23.790145+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/jobhistory",
+      "at": "2026-10-23T15:49:23.795634+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 8031,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18452/jobhistory",
+      "at": "2026-10-23T15:49:23.814010+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18452/jobhistory",
+      "at": "2026-10-23T15:49:23.827842+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/conf",
+      "at": "2026-10-23T15:49:23.830334+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:23.832663+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "history",
+      "check": "service_data",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18452/ws/v1/history/info",
+      "at": "2026-10-23T15:49:23.835055+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 244,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "unauthenticated",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18453/proxy/application_1792718504081_0002/",
+      "at": "2026-10-23T15:49:23.842770+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "wrong_password",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18453/proxy/application_1792718504081_0002/",
+      "at": "2026-10-23T15:49:23.845625+00:00",
+      "expected_status": [
+        401
+      ],
+      "status": 401,
+      "bytes": 172,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "page",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18453/proxy/application_1792718504081_0002/",
+      "at": "2026-10-23T15:49:23.851106+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 7291,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "head",
+      "method": "HEAD",
+      "url": "https://PUBLIC_HOST:18453/proxy/application_1792718504081_0002/",
+      "at": "2026-10-23T15:49:24.277034+00:00",
+      "expected_status": [
+        200
+      ],
+      "status": 200,
+      "bytes": 0,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "post_blocked",
+      "method": "POST",
+      "url": "https://PUBLIC_HOST:18453/proxy/application_1792718504081_0002/",
+      "at": "2026-10-23T15:49:24.313272+00:00",
+      "expected_status": [
+        405
+      ],
+      "status": 405,
+      "bytes": 150,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "configuration_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18453/conf",
+      "at": "2026-10-23T15:49:24.315715+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    },
+    {
+      "service": "proxy",
+      "check": "webhdfs_blocked",
+      "method": "GET",
+      "url": "https://PUBLIC_HOST:18453/webhdfs/v1/?op=GETFILESTATUS",
+      "at": "2026-10-23T15:49:24.318138+00:00",
+      "expected_status": [
+        403,
+        404
+      ],
+      "status": 403,
+      "bytes": 146,
+      "result": "pass"
+    }
+  ],
+  "connect_host": "127.0.0.1",
+  "result": "pass",
+  "finished_at": "2026-10-23T15:49:24.320532+00:00",
+  "redaction": "Public address replaced by PUBLIC_HOST; node identifiers replaced by role labels; measured statuses, sizes and times retained.",
+  "certificate_trust": "Explicit test certificate; not publicly trusted. TLS hostname verification enabled.",
+  "publication_complete": false
+}

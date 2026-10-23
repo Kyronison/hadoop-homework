@@ -1,0 +1,203 @@
+{
+  "checked_at_utc": "2026-10-23T01:25:49.899962+00:00",
+  "source": "Summary of the recorded VM, JMX, YARN REST and HTTP checks; hostnames, addresses and user paths omitted.",
+  "environment": {
+    "nodes": 4,
+    "os": "Ubuntu 24.04.5",
+    "java": "11.0.32.1",
+    "python": "3.12.3",
+    "hadoop": "3.4.2",
+    "memory_mib_per_node": 3886,
+    "vcpus_per_node": 2
+  },
+  "hdfs": {
+    "live_datanodes": 3,
+    "dead_datanodes": 0,
+    "failed_volumes": 0,
+    "file_replication": 3,
+    "readback_matches_input": true,
+    "fsck": "HEALTHY",
+    "checkpoint_time_utc": "2026-10-23T01:21:45.313000+00:00",
+    "checkpoint_txid": 22
+  },
+  "yarn": {
+    "node_states": [
+      "RUNNING",
+      "RUNNING",
+      "RUNNING"
+    ],
+    "lost_nodes": 0,
+    "unhealthy_nodes": 0,
+    "container_memory_mib_per_node": 1536
+  },
+  "wordcount": {
+    "id": "job_1792718504081_0001",
+    "state": "SUCCEEDED",
+    "mapsTotal": 1,
+    "mapsCompleted": 1,
+    "reducesTotal": 1,
+    "reducesCompleted": 1,
+    "failedMapAttempts": 0,
+    "failedReduceAttempts": 0,
+    "uberized": false,
+    "application_id": "application_1792718504081_0001",
+    "final_status": "SUCCEEDED",
+    "result": {
+      "hadoop": 2,
+      "hdfs": 1,
+      "yarn": 1
+    },
+    "success_file": true
+  },
+  "local_tests": {
+    "total": 23,
+    "result": "OK",
+    "skipped": 0
+  },
+  "external_http": [
+    {
+      "checked_at_utc": "2026-10-23T01:23:56.823284+00:00",
+      "phase": "running application",
+      "responses": [
+        {
+          "service": "NameNode",
+          "status": 200,
+          "bytes": 18995,
+          "request_path": "/dfshealth.html"
+        },
+        {
+          "service": "SecondaryNameNode",
+          "status": 200,
+          "bytes": 302469,
+          "request_path": "/jmx"
+        },
+        {
+          "service": "DataNode worker1",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "DataNode worker2",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "DataNode worker3",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "ResourceManager",
+          "status": 200,
+          "bytes": 14624,
+          "request_path": "/cluster"
+        },
+        {
+          "service": "NodeManager worker1",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "NodeManager worker2",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "NodeManager worker3",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "JobHistory",
+          "status": 200,
+          "bytes": 7787,
+          "request_path": "/jobhistory"
+        },
+        {
+          "service": "Web Application Proxy",
+          "status": 200,
+          "bytes": 7288,
+          "request_path": "/proxy/application_1792718504081_0001/"
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-23T01:26:47.450873+00:00",
+      "phase": "finished application",
+      "responses": [
+        {
+          "service": "NameNode",
+          "status": 200,
+          "bytes": 18995,
+          "request_path": "/dfshealth.html"
+        },
+        {
+          "service": "SecondaryNameNode",
+          "status": 200,
+          "bytes": 3586,
+          "request_path": "/status.html"
+        },
+        {
+          "service": "DataNode worker1",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "DataNode worker2",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "DataNode worker3",
+          "status": 200,
+          "bytes": 4750,
+          "request_path": "/datanode.html"
+        },
+        {
+          "service": "ResourceManager",
+          "status": 200,
+          "bytes": 14639,
+          "request_path": "/cluster"
+        },
+        {
+          "service": "NodeManager worker1",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "NodeManager worker2",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "NodeManager worker3",
+          "status": 200,
+          "bytes": 6585,
+          "request_path": "/node"
+        },
+        {
+          "service": "JobHistory",
+          "status": 200,
+          "bytes": 8031,
+          "request_path": "/jobhistory"
+        },
+        {
+          "service": "Web Application Proxy",
+          "status": 200,
+          "bytes": 10695,
+          "request_path": "/proxy/application_1792718504081_0001/"
+        }
+      ]
+    }
+  ]
+}
