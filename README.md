@@ -1,13 +1,14 @@
-# Hadoop: HDFS, YARN и Hive
+# Hadoop: HDFS, YARN, Hive и Spark
 
 Домашние задания по развёртыванию Hadoop на четырёх виртуальных машинах.
 
-Статус проверки: HDFS, YARN и Hive работают. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
+Статус проверки: HDFS, YARN и Hive работают. Для ДЗ4 два запуска Spark на YARN дали одинаковые пять строк в двух партициях Parquet; таблица прочитана через Hive Beeline после завершения Spark. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
 
 - [ДЗ1 — HDFS](hw1/README.md): NameNode, SecondaryNameNode и три DataNode.
 - [ДЗ2 — YARN](hw2/README.md): ResourceManager, три NodeManager, JobHistory, Web Application Proxy и доступ к веб-интерфейсам через SSH с открытием на localhost.
 - [ДЗ3 — Hive](hw3/README.md): PostgreSQL, выделенный Metastore, HiveServer2, загрузка партиций и два одновременных JDBC-клиента.
-- [Результаты проверки](VALIDATION.md): запуск на учебном стенде и результат WordCount.
+- [ДЗ4 — Spark](hw4/README.md): сессия на YARN, преобразование данных HDFS, партиционированная таблица Parquet и чтение через Hive.
+- [Результаты проверки](VALIDATION.md): HDFS, YARN/WordCount, Hive и Spark на учебном стенде.
 
 Используются Ubuntu 24.04, Java 11, Python 3.12 и Hadoop 3.4.2. Python-скрипты работают без сторонних библиотек.
 
@@ -44,7 +45,7 @@ cp inventory.example.json inventory.json
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m compileall -q common hw1 hw2 hw3 tests
+python3 -m compileall -q common hw1 hw2 hw3 hw4 tests
 bash -n common/node.sh
 bash -n hw3/node.sh
 python3 common/cluster.py render --inventory inventory.example.json --output generated-example

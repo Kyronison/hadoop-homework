@@ -1,0 +1,192 @@
+{
+  "scope": "HW4 teaching scenario on the existing HDFS/YARN/Hive cluster",
+  "date": "2026-10-23",
+  "ok": true,
+  "versions": {
+    "spark": "3.5.9",
+    "hadoop_server": "3.4.2",
+    "hadoop_client_in_spark": "3.3.4",
+    "hive": "4.0.0-alpha-2",
+    "java": "11.0.32.1",
+    "python": "3.12.3"
+  },
+  "archive_sha512": "66097faf48b12f8673dc13256a44d731c27c86a5831cd8ca930c6fd9dd9bdf31d40593095e959461351d55da1a8e3ad5ed95e0b4b51bea87ca3989ab002ea8ce",
+  "verified_runs": [
+    {
+      "started_at": "2026-10-23T17:35:46.799900+00:00",
+      "finished_at": "2026-10-23T17:38:32.700004+00:00",
+      "yarn": {
+        "id": "application_1792718504081_0010",
+        "name": "hw4-spark-sales",
+        "applicationType": "SPARK",
+        "state": "FINISHED",
+        "finalStatus": "SUCCEEDED",
+        "startedTime": 1792776979690,
+        "finishedTime": 1792777022340
+      },
+      "spark_submit_exit_code": 0,
+      "spark_application_checks": "PASS",
+      "spark_version": "3.5.9",
+      "catalog": "in-memory",
+      "spark_table_readback_matches": true,
+      "parquet_readback_matches": true,
+      "executors": [
+        {
+          "id": "2",
+          "node_role": "edge",
+          "total_tasks": 9
+        },
+        {
+          "id": "1",
+          "node_role": "worker3",
+          "total_tasks": 9
+        }
+      ],
+      "beeline_readback_matches": true,
+      "partition_locations_match_current_run": true,
+      "hdfs_source_unchanged": true
+    },
+    {
+      "started_at": "2026-10-23T17:40:16.713518+00:00",
+      "finished_at": "2026-10-23T17:42:47.807515+00:00",
+      "yarn": {
+        "id": "application_1792718504081_0012",
+        "name": "hw4-spark-sales",
+        "applicationType": "SPARK",
+        "state": "FINISHED",
+        "finalStatus": "SUCCEEDED",
+        "startedTime": 1792777244617,
+        "finishedTime": 1792777279983
+      },
+      "spark_submit_exit_code": 0,
+      "spark_application_checks": "PASS",
+      "spark_version": "3.5.9",
+      "catalog": "in-memory",
+      "spark_table_readback_matches": true,
+      "parquet_readback_matches": true,
+      "executors": [
+        {
+          "id": "2",
+          "node_role": "worker3",
+          "total_tasks": 9
+        },
+        {
+          "id": "1",
+          "node_role": "worker2",
+          "total_tasks": 9
+        }
+      ],
+      "beeline_readback_matches": true,
+      "partition_locations_match_current_run": true,
+      "hdfs_source_unchanged": true
+    }
+  ],
+  "data": {
+    "input_table": "hw3_lab.sales",
+    "input_rows": 6,
+    "spark_session_table": "hw4_spark.daily_sales",
+    "persistent_hive_table": "hw4_lab.daily_sales",
+    "storage": "Parquet",
+    "partition_columns": [
+      "dt"
+    ],
+    "partitions": [
+      "dt=2026-10-01",
+      "dt=2026-10-02"
+    ],
+    "schema": [
+      {
+        "name": "customer_id",
+        "type": "int",
+        "nullable": true
+      },
+      {
+        "name": "order_count",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "total_amount",
+        "type": "decimal(20,2)",
+        "nullable": true
+      },
+      {
+        "name": "average_amount",
+        "type": "decimal(20,2)",
+        "nullable": true
+      },
+      {
+        "name": "dt",
+        "type": "string",
+        "nullable": true
+      }
+    ],
+    "output_rows": 5,
+    "original_orders": 6,
+    "total_amount": "900.00",
+    "rows": [
+      {
+        "customer_id": 101,
+        "order_count": 2,
+        "total_amount": "149.50",
+        "average_amount": "74.75",
+        "dt": "2026-10-01"
+      },
+      {
+        "customer_id": 102,
+        "order_count": 1,
+        "total_amount": "250.50",
+        "average_amount": "250.50",
+        "dt": "2026-10-01"
+      },
+      {
+        "customer_id": 102,
+        "order_count": 1,
+        "total_amount": "120.00",
+        "average_amount": "120.00",
+        "dt": "2026-10-02"
+      },
+      {
+        "customer_id": 103,
+        "order_count": 1,
+        "total_amount": "80.00",
+        "average_amount": "80.00",
+        "dt": "2026-10-02"
+      },
+      {
+        "customer_id": 104,
+        "order_count": 1,
+        "total_amount": "300.00",
+        "average_amount": "300.00",
+        "dt": "2026-10-02"
+      }
+    ]
+  },
+  "repeat_run": {
+    "new_output_directory": true,
+    "same_rows_and_totals": true,
+    "duplicates": 0,
+    "previous_output_retained": true
+  },
+  "cluster": {
+    "hdfs": "HEALTHY",
+    "live_datanodes": 3,
+    "running_nodemanagers": 3,
+    "hadoop_config_hashes_unchanged_on_all_four_nodes": true,
+    "hadoop_and_hive_jvm_service_pids_unchanged": true,
+    "embedded_derby_directories_found": 0
+  },
+  "tests": {
+    "executed": 97,
+    "failures": 0,
+    "skipped": 0,
+    "platform": "Linux edge, ordinary Hadoop user"
+  },
+  "limits": [
+    "Small fixed teaching dataset; no load or failure-recovery test.",
+    "Spark session catalog is ephemeral; durable Hive metadata is registered through existing HiveServer2.",
+    "Two Hive partition location updates are sequential, not an atomic transaction.",
+    "Python 3.12.3 was tested only for this built-in DataFrame scenario without Python UDF/RDD.",
+    "A diagnostic run stopped on a local URI validation error; it is not included among verified runs. YARN status alone was not used as proof."
+  ]
+}

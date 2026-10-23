@@ -3,6 +3,7 @@ inventory.local.json
 generated/
 generated-example/
 generated-hive/
+generated-spark/
 evidence/
 __pycache__/
 *.pyc
