@@ -1,23 +1,24 @@
-# Hadoop: HDFS, YARN, Hive и Spark
+# Hadoop: HDFS, YARN, Hive, Spark и Prefect
 
 Домашние задания по развёртыванию Hadoop на четырёх виртуальных машинах.
 
-Статус проверки: HDFS, YARN и Hive работают. Для ДЗ4 два запуска Spark на YARN дали одинаковые пять строк в двух партициях Parquet; таблица прочитана через Hive Beeline после завершения Spark. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
+Статус проверки: HDFS, YARN и Hive работают. Для ДЗ5 два запуска потока Prefect завершились в состоянии `COMPLETED`: Spark на YARN прочитал данные ДЗ3 с HDFS, агрегировал их и сохранил таблицу, Beeline прочитал те же четыре строки. Для ДЗ4 два запуска Spark на YARN дали одинаковые пять строк в двух партициях Parquet; таблица прочитана через Hive Beeline после завершения Spark. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
 
 - [ДЗ1 — HDFS](hw1/README.md): NameNode, SecondaryNameNode и три DataNode.
 - [ДЗ2 — YARN](hw2/README.md): ResourceManager, три NodeManager, JobHistory, Web Application Proxy и доступ к веб-интерфейсам через SSH с открытием на localhost.
 - [ДЗ3 — Hive](hw3/README.md): PostgreSQL, выделенный Metastore, HiveServer2, загрузка партиций и два одновременных JDBC-клиента.
 - [ДЗ4 — Spark](hw4/README.md): сессия на YARN, преобразование данных HDFS, партиционированная таблица Parquet и чтение через Hive.
-- [Результаты проверки](VALIDATION.md): HDFS, YARN/WordCount, Hive и Spark на учебном стенде.
+- [ДЗ5 — Prefect](hw5/README.md): поток Prefect запускает Spark на YARN, читает данные HDFS, преобразует их и сохраняет как таблицу.
+- [Результаты проверки](VALIDATION.md): HDFS, YARN/WordCount, Hive, Spark и Prefect на учебном стенде.
 
-Используются Ubuntu 24.04, Java 11, Python 3.12 и Hadoop 3.4.2. Python-скрипты работают без сторонних библиотек.
+Используются Ubuntu 24.04, Java 11, Python 3.12 и Hadoop 3.4.2. Python-скрипты работают без сторонних библиотек; исключение — поток ДЗ5, которому нужен Prefect (ставится в отдельный virtualenv скриптом `hw5/deploy.py`).
 
 ## Схема кластера
 
 | Роль | Сервисы |
 |---|---|
 | master | NameNode, ResourceManager, JobHistory, Web Application Proxy; для ДЗ3 — PostgreSQL и Hive Metastore |
-| worker1 / edge | DataNode, NodeManager, SecondaryNameNode; запуск установки |
+| worker1 / edge | DataNode, NodeManager, SecondaryNameNode; запуск установки; драйвер Spark (ДЗ4) и поток Prefect (ДЗ5) |
 | worker2 | DataNode, NodeManager; для ДЗ3 — HiveServer2 |
 | worker3 | DataNode, NodeManager |
 
@@ -39,13 +40,13 @@ cp inventory.example.json inventory.json
 
 В проверенной конфигурации у каждой ВМ было 4 ГБ RAM и 2 vCPU. Для YARN выделено по 1536 MiB и 2 vcores на worker. Все данные находятся в выделенном каталоге `install_root`, например `/home/team/teachbase-hadoop`.
 
-Далее выполнить подготовку и установку по инструкциям [ДЗ1](hw1/README.md), затем [ДЗ2](hw2/README.md) и [ДЗ3](hw3/README.md). Для работы нужен весь репозиторий. Hive устанавливается отдельно в `hive.install_root`; параметры Hadoop остаются прежними.
+Далее выполнить подготовку и установку по инструкциям [ДЗ1](hw1/README.md), затем [ДЗ2](hw2/README.md), [ДЗ3](hw3/README.md), [ДЗ4](hw4/README.md) и [ДЗ5](hw5/README.md). Для работы нужен весь репозиторий. Hive устанавливается отдельно в `hive.install_root`; параметры Hadoop остаются прежними.
 
 ## Проверка скриптов
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m compileall -q common hw1 hw2 hw3 hw4 tests
+python3 -m compileall -q common hw1 hw2 hw3 hw4 hw5 tests
 bash -n common/node.sh
 bash -n hw3/node.sh
 python3 common/cluster.py render --inventory inventory.example.json --output generated-example

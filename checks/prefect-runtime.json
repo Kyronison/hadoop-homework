@@ -1,0 +1,242 @@
+{
+  "scope": "HW5 Prefect flow on the existing HDFS/YARN/Hive cluster",
+  "date": "2026-11-20",
+  "ok": true,
+  "versions": {
+    "prefect": "3.9.2",
+    "spark": "3.5.9",
+    "hadoop_server": "3.4.2",
+    "hive": "4.0.0-alpha-2",
+    "java": "11.0.33.1",
+    "python": "3.12.3"
+  },
+  "flow": "hw5-spark-yarn-pipeline",
+  "tasks": [
+    "1. check-cluster",
+    "2. start-spark-session-on-yarn",
+    "3. connect-to-hdfs",
+    "4. read-data-from-hdfs",
+    "5. transform-data",
+    "6. save-as-table",
+    "7. stop-spark-session",
+    "8. register-hive-table",
+    "9. verify-table",
+    "10. write-report"
+  ],
+  "verified_runs": [
+    {
+      "prefect_flow_run_id": "607791dd-d963-42e7-af7c-ec1a0b74b0e0",
+      "prefect_api": "temporary server (no PREFECT_API_URL)",
+      "started_at": "2026-11-20T16:47:30.411830+00:00",
+      "finished_at": "2026-11-20T16:50:20.127030+00:00",
+      "flow_state": "COMPLETED",
+      "task_runs_completed": 10,
+      "yarn": {
+        "id": "application_1792718504081_0014",
+        "name": "hw5-prefect-sales",
+        "applicationType": "SPARK",
+        "queue": "root.default",
+        "state": "FINISHED",
+        "finalStatus": "SUCCEEDED",
+        "startedTime": 1795193306497,
+        "finishedTime": 1795193373666
+      },
+      "hdfs": {
+        "safemode": "OFF",
+        "active_nodemanagers": 3,
+        "input_files": [
+          {
+            "path": "/user/hive/warehouse/hw3/hw3_lab.db/sales/dt=2026-10-01/sales-2026-10-01.csv",
+            "bytes": 38
+          },
+          {
+            "path": "/user/hive/warehouse/hw3/hw3_lab.db/sales/dt=2026-10-02/sales-2026-10-02.csv",
+            "bytes": 38
+          }
+        ],
+        "output_path": "/user/team/hw5/runs/run-607791ddd96342e7af7cec1a0b74b0e0/data"
+      },
+      "transform": {
+        "source_rows": 6,
+        "orders": 6,
+        "total_amount": "900.00",
+        "customers": 4
+      },
+      "spark_table": {
+        "name": "hw5_spark.customer_summary",
+        "type": "EXTERNAL",
+        "table_readback_matches": true,
+        "parquet_readback_matches": true
+      },
+      "executors": [
+        {
+          "id": "driver",
+          "node_role": "edge",
+          "total_tasks": 0
+        },
+        {
+          "id": "2",
+          "node_role": "edge",
+          "total_tasks": 17
+        },
+        {
+          "id": "1",
+          "node_role": "worker3",
+          "total_tasks": 19
+        }
+      ],
+      "hive_table": {
+        "name": "hw5_lab.customer_summary",
+        "location": "/user/team/hw5/runs/run-607791ddd96342e7af7cec1a0b74b0e0/data",
+        "beeline_matches_spark": true
+      }
+    },
+    {
+      "prefect_flow_run_id": "cbbf23c6-90c6-4b12-b4bd-0889120372e8",
+      "prefect_api": "dedicated server http://127.0.0.1:4200/api",
+      "started_at": "2026-11-20T16:51:57.236119+00:00",
+      "finished_at": "2026-11-20T16:54:15.869892+00:00",
+      "flow_state": "COMPLETED",
+      "task_runs_completed": 10,
+      "yarn": {
+        "id": "application_1792718504081_0015",
+        "name": "hw5-prefect-sales",
+        "applicationType": "SPARK",
+        "queue": "root.default",
+        "state": "FINISHED",
+        "finalStatus": "SUCCEEDED",
+        "startedTime": 1795193552490,
+        "finishedTime": 1795193610331
+      },
+      "hdfs": {
+        "safemode": "OFF",
+        "active_nodemanagers": 3,
+        "input_files": [
+          {
+            "path": "/user/hive/warehouse/hw3/hw3_lab.db/sales/dt=2026-10-01/sales-2026-10-01.csv",
+            "bytes": 38
+          },
+          {
+            "path": "/user/hive/warehouse/hw3/hw3_lab.db/sales/dt=2026-10-02/sales-2026-10-02.csv",
+            "bytes": 38
+          }
+        ],
+        "output_path": "/user/team/hw5/runs/run-cbbf23c690c64b12b4bd0889120372e8/data"
+      },
+      "transform": {
+        "source_rows": 6,
+        "orders": 6,
+        "total_amount": "900.00",
+        "customers": 4
+      },
+      "spark_table": {
+        "name": "hw5_spark.customer_summary",
+        "type": "EXTERNAL",
+        "table_readback_matches": true,
+        "parquet_readback_matches": true
+      },
+      "executors": [
+        {
+          "id": "driver",
+          "node_role": "edge",
+          "total_tasks": 0
+        },
+        {
+          "id": "2",
+          "node_role": "worker2",
+          "total_tasks": 17
+        },
+        {
+          "id": "1",
+          "node_role": "edge",
+          "total_tasks": 19
+        }
+      ],
+      "hive_table": {
+        "name": "hw5_lab.customer_summary",
+        "location": "/user/team/hw5/runs/run-cbbf23c690c64b12b4bd0889120372e8/data",
+        "beeline_matches_spark": true
+      }
+    }
+  ],
+  "result_rows": [
+    {
+      "customer_id": 101,
+      "order_count": 2,
+      "active_days": 1,
+      "first_purchase": "2026-10-01",
+      "last_purchase": "2026-10-01",
+      "total_amount": "149.50",
+      "average_amount": "74.75",
+      "max_amount": "100.00",
+      "segment": "regular"
+    },
+    {
+      "customer_id": 102,
+      "order_count": 2,
+      "active_days": 2,
+      "first_purchase": "2026-10-01",
+      "last_purchase": "2026-10-02",
+      "total_amount": "370.50",
+      "average_amount": "185.25",
+      "max_amount": "250.50",
+      "segment": "high"
+    },
+    {
+      "customer_id": 103,
+      "order_count": 1,
+      "active_days": 1,
+      "first_purchase": "2026-10-02",
+      "last_purchase": "2026-10-02",
+      "total_amount": "80.00",
+      "average_amount": "80.00",
+      "max_amount": "80.00",
+      "segment": "regular"
+    },
+    {
+      "customer_id": 104,
+      "order_count": 1,
+      "active_days": 1,
+      "first_purchase": "2026-10-02",
+      "last_purchase": "2026-10-02",
+      "total_amount": "300.00",
+      "average_amount": "300.00",
+      "max_amount": "300.00",
+      "segment": "high"
+    }
+  ],
+  "beeline_manual_check": {
+    "totals": {
+      "customers": 4,
+      "orders": 6,
+      "total_amount": "900.00"
+    },
+    "by_segment": [
+      {
+        "segment": "high",
+        "customers": 2,
+        "total_amount": "670.50"
+      },
+      {
+        "segment": "regular",
+        "customers": 2,
+        "total_amount": "229.50"
+      }
+    ],
+    "table_type": "EXTERNAL_TABLE",
+    "serde": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+    "location_is_latest_run": true
+  },
+  "cluster_after": {
+    "hdfs_fsck_hw5": "HEALTHY",
+    "live_datanodes": 3,
+    "running_nodemanagers": 3,
+    "hdfs_source_unchanged": true
+  },
+  "unit_tests_linux": {
+    "ran": 109,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
