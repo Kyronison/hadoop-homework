@@ -1,0 +1,271 @@
+
+[2026-11-28 10:18:23] Параметры: TEAM=team40 PREFIX=team40 PGHOST=team-05-nn PGDATABASE=idp
+psql (Apache Cloudberry) 14.10
+
+[2026-11-28 10:18:23] Шаг 1. Подключение к team-05-nn:5432/idp
+=== Шаг 1. Подключение ===
+ current_user | current_database | coordinator_ip | coordinator_port 
+--------------+------------------+----------------+------------------
+ team40       | idp              | 10.5.0.11      |             5432
+(1 row)
+
+                                                                                             version                                                                                              
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ PostgreSQL 14.10 (Apache Cloudberry 2.2.0-incubating build 13d3c58eaa0) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit compiled on Nov  3 2026 15:36:21
+(1 row)
+
+ content | role | preferred_role | mode | status |  hostname  | port 
+---------+------+----------------+------+--------+------------+------
+      -1 | p    | p              | n    | u      | team-05-nn | 5432
+       0 | p    | p              | n    | u      | team-05-00 | 6000
+       1 | p    | p              | n    | u      | team-05-01 | 6000
+(3 rows)
+
+OK: current_user = team40 | current_database = idp
+Рабочих primary-сегментов: 2
+OK: есть право CREATE в схеме team40
+
+[2026-11-28 10:18:23] Шаг 2. Копирование /srv/gpfdist/taxi_small.csv -> /srv/gpfdist/team40/team40_taxi.csv
+-rw-r--r-- 1 team40 team40 7063247 Nov 28 10:18 /srv/gpfdist/team40/team40_taxi.csv
+pickup_day,pickup_zone_id,passenger_count,trip_distance,amount_cents,vendor_id,pickup_at,dropoff_at
+2024-01-01,186,1.0,1.72,2270,2,2024-01-01 00:57:55,2024-01-01 01:17:43
+2024-01-01,140,1.0,1.8,1875,1,2024-01-01 00:03:00,2024-01-01 00:09:36
+Размер: 7063247 байт (6.8MiB); строк всего: 100001, строк данных: 100000
+URL gpfdist: gpfdist://team-05-en:8081/team40/team40_taxi.csv
+
+[2026-11-28 10:18:23] Шаг 3. Внешняя таблица team40_ext
+=== Шаг 3. Внешняя таблица (gpfdist) ===
+psql:/home/team40/hw6/sql/02_external.sql:8: NOTICE:  foreign table "team40_ext" does not exist, skipping
+psql:/home/team40/hw6/sql/02_external.sql:25: NOTICE:  HEADER means that each one of the data files has a header row
+ table_name | relkind |                             option                             
+------------+---------+----------------------------------------------------------------
+ team40_ext | f       | format=csv
+ team40_ext | f       | delimiter=,
+ team40_ext | f       | header=true
+ team40_ext | f       | location_uris=gpfdist://team-05-en:8081/team40/team40_taxi.csv
+ team40_ext | f       | execute_on=ALL_SEGMENTS
+ team40_ext | f       | log_errors=f
+ team40_ext | f       | is_writable=false
+(7 rows)
+
+psql:/home/team40/hw6/sql/02_external.sql:39: NOTICE:  HEADER means that each one of the data files has a header row
+ pickup_day | pickup_zone_id | passenger_count | trip_distance | amount_cents | vendor_id |      pickup_at      |     dropoff_at      
+------------+----------------+-----------------+---------------+--------------+-----------+---------------------+---------------------
+ 2024-01-01 |            186 |               1 |          1.72 |         2270 |         2 | 2024-01-01 00:57:55 | 2024-01-01 01:17:43
+ 2024-01-01 |            140 |               1 |           1.8 |         1875 |         1 | 2024-01-01 00:03:00 | 2024-01-01 00:09:36
+ 2024-01-01 |            236 |               1 |           4.7 |         3130 |         1 | 2024-01-01 00:17:06 | 2024-01-01 00:35:01
+ 2024-01-01 |             79 |               1 |           1.4 |         1700 |         1 | 2024-01-01 00:36:38 | 2024-01-01 00:44:56
+ 2024-01-01 |            211 |               1 |           0.8 |         1610 |         1 | 2024-01-01 00:46:51 | 2024-01-01 00:52:57
+(5 rows)
+
+psql:/home/team40/hw6/sql/02_external.sql:41: NOTICE:  HEADER means that each one of the data files has a header row
+Строк во внешней таблице: 100000 | строк данных в CSV: 100000
+OK: внешняя таблица читает все строки файла
+
+[2026-11-28 10:18:23] Шаг 4. Внутренняя таблица team40_taxi
+=== Шаг 4. Внутренняя таблица ===
+psql:/home/team40/hw6/sql/03_load.sql:31: NOTICE:  HEADER means that each one of the data files has a header row
+ table_name  | access_method |         distributed_by          |          storage_options           
+-------------+---------------+---------------------------------+------------------------------------
+ team40_taxi | ao_column     | DISTRIBUTED BY (pickup_zone_id) | compresstype=zstd, compresslevel=1
+(1 row)
+
+Строк во внутренней таблице: 100000 | строк данных в CSV: 100000
+OK: count(*) внутренней таблицы совпадает с исходным файлом
+psql:/home/team40/hw6/sql/03_load.sql:62: NOTICE:  HEADER means that each one of the data files has a header row
+psql:/home/team40/hw6/sql/03_load.sql:62: NOTICE:  HEADER means that each one of the data files has a header row
+Строк, различающихся между внешней и внутренней таблицей: 0
+OK: данные внутренней таблицы совпадают с внешней построчно
+
+[2026-11-28 10:18:24] Шаг 5. Проверка распределения по сегментам
+=== Шаг 5. Распределение по сегментам ===
+ gp_segment_id | rows  |  pct  | zones 
+---------------+-------+-------+-------
+             0 | 45385 | 45.39 |   107
+             1 | 54615 | 54.62 |   119
+(2 rows)
+
+Сегментов с данными: 2 из 2
+Строк на сегмент: min = 45385 | max = 54615
+Перекос max/min = 1.203 | коэффициент вариации = 0.092
+OK: строки есть на всех сегментах, перекос не больше 2x
+ pickup_zone_id | pickup_day | vendor_id | pickup_at 
+----------------+------------+-----------+-----------
+            226 |          6 |         2 |     63586
+(1 row)
+
+psql:/home/team40/hw6/sql/04_distribution.sql:52: NOTICE:  table "team40_keytest_day" does not exist, skipping
+psql:/home/team40/hw6/sql/04_distribution.sql:52: NOTICE:  table "team40_keytest_vendor" does not exist, skipping
+psql:/home/team40/hw6/sql/04_distribution.sql:52: NOTICE:  table "team40_keytest_random" does not exist, skipping
+      distribution_key      | rows_per_segment | skew_ratio 
+----------------------------+------------------+------------
+ 1. pickup_zone_id (выбран) | 45385 / 54615    | 1.203
+ 2. pickup_day              | 29502 / 70498    | 2.390
+ 3. vendor_id               | 77128 / 22872    | 3.372
+ 4. RANDOMLY                | 49841 / 50159    | 1.006
+(4 rows)
+
+--- План JOIN со справочником при ключе pickup_zone_id ---
+(соединение выполняется на сегментах без перемещения строк, есть только Gather Motion результата)
+                                     QUERY PLAN                                     
+------------------------------------------------------------------------------------
+ Gather Motion 2:1  (slice1; segments: 2)  (cost=0.00..885.67 rows=100000 width=20)
+   ->  Hash Join  (cost=0.00..876.69 rows=50000 width=20)
+         Hash Cond: (t.pickup_zone_id = z.location_id)
+         ->  Seq Scan on team40_taxi t  (cost=0.00..432.93 rows=50000 width=4)
+         ->  Hash  (cost=431.01..431.01 rows=133 width=20)
+               ->  Seq Scan on taxi_zones z  (cost=0.00..431.01 rows=133 width=20)
+ Optimizer: GPORCA
+(7 rows)
+
+--- Тот же JOIN при DISTRIBUTED RANDOMLY ---
+(строки зоны лежат на разных сегментах, поэтому справочник рассылается на все сегменты: Broadcast Motion)
+                                              QUERY PLAN                                              
+------------------------------------------------------------------------------------------------------
+ Gather Motion 2:1  (slice1; segments: 2)  (cost=0.00..885.00 rows=100000 width=20)
+   ->  Hash Join  (cost=0.00..876.02 rows=50000 width=20)
+         Hash Cond: (t.pickup_zone_id = z.location_id)
+         ->  Seq Scan on team40_keytest_random t  (cost=0.00..432.05 rows=50000 width=4)
+         ->  Hash  (cost=431.15..431.15 rows=265 width=20)
+               ->  Broadcast Motion 2:2  (slice2; segments: 2)  (cost=0.00..431.15 rows=265 width=20)
+                     ->  Seq Scan on taxi_zones z  (cost=0.00..431.01 rows=133 width=20)
+ Optimizer: GPORCA
+(8 rows)
+
+
+[2026-11-28 10:18:25] Шаг 6. Аналитические запросы
+=== Шаг 6. Аналитические запросы ===
+--- 6.1. Топ-10 зон посадки (JOIN с public.taxi_zones) ---
+  borough  |             zone             | trips | trips_pct | revenue_usd | avg_check_usd | avg_distance_mi 
+-----------+------------------------------+-------+-----------+-------------+---------------+-----------------
+ Queens    | JFK Airport                  |  8035 |      8.04 |   620416.07 |         77.21 |           15.64
+ Manhattan | Penn Station/Madison Sq West |  4302 |      4.30 |   102142.93 |         23.74 |            2.60
+ Manhattan | Midtown Center               |  4073 |      4.07 |   103208.12 |         25.34 |            3.11
+ Queens    | LaGuardia Airport            |  3879 |      3.88 |   238102.51 |         61.38 |            9.46
+ Manhattan | Upper East Side South        |  3360 |      3.36 |    63214.83 |         18.81 |            2.16
+ Manhattan | Midtown East                 |  3345 |      3.35 |    79597.89 |         23.80 |            2.74
+ Manhattan | Clinton East                 |  3104 |      3.10 |    79110.28 |         25.49 |            3.15
+ Manhattan | Upper East Side North        |  3093 |      3.09 |    61046.86 |         19.74 |            2.11
+ Manhattan | Times Sq/Theatre District    |  3057 |      3.06 |    99239.31 |         32.46 |            4.54
+ Manhattan | Murray Hill                  |  2945 |      2.95 |    69148.65 |         23.48 |            2.68
+(10 rows)
+
+--- 6.2. Поездки и выручка по районам (JOIN с public.taxi_zones) ---
+    borough     | trips | trips_pct | revenue_usd | avg_check_usd | avg_distance_mi | avg_duration_min 
+----------------+-------+-----------+-------------+---------------+-----------------+------------------
+ Manhattan      | 84717 |     84.72 |  1997917.31 |         23.58 |            2.80 |             14.4
+ Queens         | 13464 |     13.46 |   935125.50 |         69.45 |           12.88 |             28.5
+ Brooklyn       |  1087 |      1.09 |    35329.08 |         32.50 |            5.95 |             25.5
+ Unknown        |   390 |      0.39 |    13281.46 |         34.06 |            3.90 |             17.5
+ Bronx          |   191 |      0.19 |     8201.23 |         42.94 |            7.10 |             29.9
+ Outside of NYC |   118 |      0.12 |    11371.74 |         96.37 |            1.60 |             15.7
+ EWR            |    29 |      0.03 |     2803.86 |         96.68 |            0.59 |              0.7
+ Staten Island  |     4 |      0.00 |      350.24 |         87.56 |            4.55 |             10.4
+(8 rows)
+
+--- 6.3. Профиль по часу посадки ---
+ pickup_hour | trips | revenue_usd | avg_check_usd | avg_distance_mi 
+-------------+-------+-------------+---------------+-----------------
+           0 |  6461 |   183096.58 |         28.34 |            3.33
+           1 |  6160 |   164619.64 |         26.72 |            3.04
+           2 |  5724 |   151186.67 |         26.41 |            3.10
+           3 |  4162 |   110833.64 |         26.63 |            3.33
+           4 |  2374 |    66176.15 |         27.88 |            3.82
+           5 |  1666 |    58387.85 |         35.05 |            5.62
+           6 |  2220 |    80819.82 |         36.41 |            6.02
+           7 |  3609 |   121684.48 |         33.72 |            5.34
+           8 |  4422 |   135254.29 |         30.59 |            4.89
+           9 |  5158 |   152539.21 |         29.57 |            4.16
+          10 |  6103 |   177706.11 |         29.12 |            4.14
+          11 |  7006 |   191713.68 |         27.36 |            3.67
+          12 |  7708 |   216602.92 |         28.10 |            3.76
+          13 |  6327 |   181359.49 |         28.66 |            4.02
+          14 |  3827 |   118056.82 |         30.85 |            4.38
+          15 |  3970 |   125852.29 |         31.70 |            4.63
+          16 |  4149 |   135526.82 |         32.66 |            4.65
+          17 |  3663 |   113704.87 |         31.04 |            4.28
+          18 |  3481 |   108007.52 |         31.03 |            4.44
+          19 |  3180 |   102771.84 |         32.32 |            4.78
+          20 |  2742 |    90195.38 |         32.89 |            4.83
+          21 |  2315 |    76370.47 |         32.99 |            5.06
+          22 |  2105 |    80945.42 |         38.45 |            6.19
+          23 |  1468 |    60968.46 |         41.53 |            6.95
+(24 rows)
+
+--- 6.4. Качество исходных данных ---
+ total_trips | outside_january_2024 | negative_amount | zero_distance | dropoff_before_pickup |  min_day   |  max_day   
+-------------+----------------------+-----------------+---------------+-----------------------+------------+------------
+      100000 |                   13 |            1586 |          1811 |                     1 | 2002-12-31 | 2024-01-03
+(1 row)
+
+
+[2026-11-28 10:18:25] Шаг 7. Витрина team40_daily
+=== Шаг 7. Витрина по дням ===
+  trip_day  | trips | revenue_usd | avg_distance_mi 
+------------+-------+-------------+-----------------
+ 2002-12-31 |     2 |        0.00 |           0.630
+ 2009-01-01 |     1 |        9.40 |           0.460
+ 2023-12-31 |    10 |      224.62 |           2.601
+ 2024-01-01 | 70495 |  2142721.65 |           4.227
+ 2024-01-02 | 29491 |   861406.75 |           4.152
+ 2024-01-03 |     1 |       18.00 |           1.410
+(6 rows)
+
+Витрина: 6 дней, 100000 поездок, 3004380.42 USD
+Детальная таблица: 100000 поездок, 3004380.42 USD
+OK: итоги витрины совпадают с детальной таблицей
+
+[2026-11-28 10:18:26] Шаг 8. ANALYZE и уборка
+=== Шаг 8. ANALYZE и удаление внешней таблицы ===
+  table_name  | planner_rows 
+--------------+--------------
+ team40_daily |            6
+ team40_taxi  |       100000
+(2 rows)
+
+  tablename   | columns_with_stats 
+--------------+--------------------
+ team40_daily |                  4
+ team40_taxi  |                  8
+(2 rows)
+
+OK: внешняя таблица team40_ext удалена
+OK: CSV удалён: /srv/gpfdist/team40/team40_taxi.csv
+Содержимое /srv/gpfdist/team40:
+total 8
+drwxr-x---  2 team40 team 4096 Nov 28 10:18 .
+drwxr-xr-x 41 root   root 4096 Nov 27 07:45 ..
+
+[2026-11-28 10:18:26] Самопроверка
+=== Самопроверка ===
+--- Таблицы команды в схеме team40 ---
+  table_name  | kind  | access_method |         distributed_by          | total_size 
+--------------+-------+---------------+---------------------------------+------------
+ team40_daily | table | heap          | DISTRIBUTED BY (trip_day)       | 160 kB
+ team40_taxi  | table | ao_column     | DISTRIBUTED BY (pickup_zone_id) | 1673 kB
+(2 rows)
+
+--- Строк на сегмент ---
+ gp_segment_id | rows  |  pct  
+---------------+-------+-------
+             0 | 45385 | 45.39
+             1 | 54615 | 54.62
+(2 rows)
+
+--- Размер таблицы на каждом сегменте ---
+ gp_segment_id | taxi_size 
+---------------+-----------
+             0 | 746 kB
+             1 | 895 kB
+(2 rows)
+
+--- Итог ---
+ csv_rows | taxi_rows | rows_match | daily_rows | raw_csv_size | taxi_size_in_db | daily_size_in_db | team_tables_size 
+----------+-----------+------------+------------+--------------+-----------------+------------------+------------------
+   100000 |    100000 | t          |          6 | 6898 kB      | 1673 kB         | 160 kB           | 1833 kB
+(1 row)
+
+Сырые данные: 7063247 байт; таблица в БД: 1712808 байт; внешних таблиц в схеме: 0
+OK: внешних таблиц в схеме team40 не осталось
+
+[2026-11-28 10:18:26] Готово: все шаги выполнены, проверки пройдены

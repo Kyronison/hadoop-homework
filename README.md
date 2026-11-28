@@ -1,15 +1,16 @@
-# Hadoop: HDFS, YARN, Hive, Spark и Prefect
+# Hadoop: HDFS, YARN, Hive, Spark, Prefect и Greenplum
 
-Домашние задания по развёртыванию Hadoop на четырёх виртуальных машинах.
+Домашние задания по развёртыванию Hadoop на четырёх виртуальных машинах и загрузке данных в MPP-СУБД Greenplum (Apache Cloudberry).
 
-Статус проверки: HDFS, YARN и Hive работают. Для ДЗ5 два запуска потока Prefect завершились в состоянии `COMPLETED`: Spark на YARN прочитал данные ДЗ3 с HDFS, агрегировал их и сохранил таблицу, Beeline прочитал те же четыре строки. Для ДЗ4 два запуска Spark на YARN дали одинаковые пять строк в двух партициях Parquet; таблица прочитана через Hive Beeline после завершения Spark. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
+Статус проверки: HDFS, YARN и Hive работают. Для ДЗ6 полный цикл загрузки в Apache Cloudberry выполнен скриптом: 100 000 строк прочитаны через gpfdist и внешнюю таблицу, легли на оба сегмента (45 385 / 54 615, перекос 1,20), витрина по дням сходится с детальной таблицей, внешняя таблица и CSV удалены. Для ДЗ5 два запуска потока Prefect завершились в состоянии `COMPLETED`: Spark на YARN прочитал данные ДЗ3 с HDFS, агрегировал их и сохранил таблицу, Beeline прочитал те же четыре строки. Для ДЗ4 два запуска Spark на YARN дали одинаковые пять строк в двух партициях Parquet; таблица прочитана через Hive Beeline после завершения Spark. Для ДЗ3 проверены два одновременных JDBC-клиента, две партиции и повторная загрузка без дублей. Все 11 веб-интерфейсов Hadoop проверены с внешнего компьютера через SSH на localhost — этот способ используется для ДЗ2. Дополнительный HTTPS-прокси проверен только внутри стенда; его публикация в Интернет для выполнения задания не требуется. Подробности и границы проверки — в [VALIDATION.md](VALIDATION.md).
 
 - [ДЗ1 — HDFS](hw1/README.md): NameNode, SecondaryNameNode и три DataNode.
 - [ДЗ2 — YARN](hw2/README.md): ResourceManager, три NodeManager, JobHistory, Web Application Proxy и доступ к веб-интерфейсам через SSH с открытием на localhost.
 - [ДЗ3 — Hive](hw3/README.md): PostgreSQL, выделенный Metastore, HiveServer2, загрузка партиций и два одновременных JDBC-клиента.
 - [ДЗ4 — Spark](hw4/README.md): сессия на YARN, преобразование данных HDFS, партиционированная таблица Parquet и чтение через Hive.
 - [ДЗ5 — Prefect](hw5/README.md): поток Prefect запускает Spark на YARN, читает данные HDFS, преобразует их и сохраняет как таблицу.
-- [Результаты проверки](VALIDATION.md): HDFS, YARN/WordCount, Hive, Spark и Prefect на учебном стенде.
+- [ДЗ6 — Greenplum](hw6/README.md): загрузка через gpfdist и внешнюю таблицу в Apache Cloudberry, распределённая таблица, проверка сегментов, аналитические запросы и витрина.
+- [Результаты проверки](VALIDATION.md): HDFS, YARN/WordCount, Hive, Spark, Prefect и Greenplum на учебных стендах.
 
 Используются Ubuntu 24.04, Java 11, Python 3.12 и Hadoop 3.4.2. Python-скрипты работают без сторонних библиотек; исключение — поток ДЗ5, которому нужен Prefect (ставится в отдельный virtualenv скриптом `hw5/deploy.py`).
 
@@ -49,6 +50,8 @@ python3 -m unittest discover -s tests -v
 python3 -m compileall -q common hw1 hw2 hw3 hw4 hw5 tests
 bash -n common/node.sh
 bash -n hw3/node.sh
+bash -n hw6/run.sh
+bash -n hw6/remote.sh
 python3 common/cluster.py render --inventory inventory.example.json --output generated-example
 ```
 
